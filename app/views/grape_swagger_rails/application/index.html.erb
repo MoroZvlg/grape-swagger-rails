@@ -67,6 +67,16 @@
         window.swaggerUi.api.clientAuthorizations.add("key", apiKeyAuthorization);
       }
     }
+		
+    $('#explore').click(function(){
+      var headers = window.swaggerUi.api.clientAuthorizations.authz
+      var auth_key = $('#input_apiKey')[0].value;
+      for (const [key, value] of Object.entries(headers)) {
+        if (value.name === 'Auth-Token'){
+          value.value = auth_key
+        }
+      }
+    })
 
     $('#input_apiKey').change(addApiKeyAuthorization);
 
